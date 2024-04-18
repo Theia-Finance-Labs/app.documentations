@@ -6,7 +6,7 @@ box::use(
 #' @export
 ui <- function(id) {
   ns <- NS(id)
-  shiny::tags$div(id = ns("content"), h1("GDP ST"))
+  shiny::includeMarkdown('app/logic/st_app_methodo.Rmd')
 }
 
 

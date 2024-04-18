@@ -9,13 +9,12 @@ box::use(
 ui <- function(id) {
   ns <- NS(id)
   semanticPage(
-    tags$div(class = "ui dividing header", "Bonds And Loans Portfolio Analysis"),
-    tags$p("This interface offers a dynamic and interactive means to assess a portfolio in the context of a shock, evaluate risk scenarios, and make informed decisions on exposures and losses."),
-    
+    tags$h1("Bonds And Loans Portfolio Analysis", class = "ui dividing header"),
+    tags$h3("Evaluate risk scenarios on a portfolio in the context of ", class = "ui sub header"),
+    tags$hr(),
     tags$div(
       class = "ui segments",
       style = "display: flex; flex-direction: column; align-items: flex-start;",
-      
       tags$div(
         class = "ui segment",
         style = "display: flex; align-items: center; justify-content: start; margin-bottom: 20px;",

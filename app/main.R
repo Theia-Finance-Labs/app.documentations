@@ -16,101 +16,79 @@ ui <- function(id) {
   ns <- NS(id)
 
   semanticPage(
-    tags$style(HTML("
-      body {
-          font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-          display: flex;
-          flex-direction: column;
-          height: 100vh;
-          background: #f0f0f0;
-          margin: 0; /* Necessary to override browser defaults */
-          padding: 0; /* Necessary to override browser defaults */
-      }
+tags$style(HTML("
+  body {
+      font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 0;
+  }
 
+  .content {
+      flex: 1;
+      display: flex;
+      margin-top: 10px;
+  }
+
+  nav {
+      flex: 1;  /* Change this to take up 1 part */
+      padding: 20px;
+      margin: 10px 10px 10px 0;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .ui.vertical.menu {
+      width: 100%;
+  }
+
+  section {
+      flex: 3;  /* Change this to take up 3 parts */
+      padding: 20px;
+      margin: 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      overflow-y: auto;
+  }
+
+  footer {
+      padding: 20px;
+      text-align: center;
+      background-color: #ffffff;
+      box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+  }
+
+  @media (max-width: 768px) {
       .content {
-          flex: 1;
-          display: flex;
-          margin-top: 10px;
+          flex-direction: column;
       }
 
-      nav {
-          flex-basis: 25%;
-          padding: 20px;
-          margin: 10px 10px 10px 0;
-          background-color: #f9f9f9;
-          border-radius: 8px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      }
-
-      .ui.vertical.menu {
+      section.main-content {
+          margin-left: 0;
           width: 100%;
       }
-
-      .ui.vertical.menu .menu {
-          position: absolute;
-          background-color: #ffffff;
-          display: none;
-          width: 100%;
-          left: 0;
-          z-index: 1000;
-      }
-
-      .ui.vertical.menu .dropdown.item:hover .menu {
-          display: block;
-      }
-
-      section {
-          flex-grow: 3;
-          padding: 20px;
-          margin: 10px;
-          background-color: #fff;
-          border-radius: 8px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-          overflow-y: auto;
-      }
-
-      footer {
-          padding: 20px;
-          text-align: center;
-          background-color: #ffffff;
-          box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
-      }
-
-      @media (max-width: 768px) {
-          .content {
-              flex-direction: column;
-          }
-
-          nav {
-              width: 250px; /* This specific width is necessary for your design at this breakpoint */
-              order: -1;
-          }
-
-          section.main-content {
-              margin-left: 0;
-              width: 100%;
-          }
-      }"
-      )),
+  }
+")),
     div(
       class = "content",
-      tags$nav(
-        class = "ui vertical menu",
-        div(class = "item ui header", "Documentation"),
-        actionLink(ns("homepage_link"), "Homepage", class = "item"),
-        actionLink(ns("gdp_st_link"), "GDP Stress Tests", class = "item"),
-        div(
-          class = "ui dropdown item",
-          "Crispy App",
-          tags$i(class = "dropdown icon"),
-          div(
-            class = "menu",
-            actionLink(ns("trisk_sidebar_link"), "Trisk Sidebar", class = "item"),
-            actionLink(ns("bonds_loans_link"), "Bonds & Loans", class = "item"),
-            actionLink(ns("equities_link"), "Equities", class = "item"),
-          )
-        )
-      ),
+  tags$nav(
+  class = "ui vertical fluid pointing menu",
+  tags$div(class = "item", style="background-color: #f7f7f7; text-align: center; padding: 10px 0;", "MAIN NAVIGATION"),
+  actionLink(ns("homepage_link"), "Homepage", class = "item"),
+  tags$div(class = "item", style="background-color: #f7f7f7; text-align: center; padding: 10px 0;", "CRISPY APP ANALYSIS"),
+  actionLink(ns("equities_link"), "Equities", class = "item"),
+  actionLink(ns("bonds_loans_link"), "Bonds & Loans", class = "item"),
+  actionLink(ns("trisk_sidebar_link"), "Trisk Sidebar", class = "item"),
+  tags$div(class = "item", style="background-color: #f7f7f7; text-align: center; padding: 10px 0;", "OTHER APPS"),
+  actionLink(ns("gdp_st_link"), "GDP Stress Tests", class = "item")
+)
+
+,
       tags$section(
         class = "main-content",
          uiOutput(ns("main_content"))

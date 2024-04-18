@@ -9,9 +9,9 @@ box::use(
 ui <- function(id) {
   ns <- NS(id)
   semanticPage(
-    tags$div(class = "ui dividing header", "Trisk Sidebar"),
-    tags$p("Trisk analysis facilitates the assessment of transition risks by applying a shock to company data and visualizing the impact on investment portfolios."),
-    
+    tags$h1("Trisk Sidebar", class = "ui dividing header"),
+    tags$h3("Generate runs of the Trisk model, or fetch pre-generated ones.", class = "ui sub header"),
+    tags$hr(),
     tags$div(
       class = "ui segments",
       style = "display: flex; flex-direction: column; align-items: flex-start;",

@@ -8,9 +8,9 @@ box::use(
 ui <- function(id) {
   ns <- NS(id)
   semanticPage(
-    tags$div(class = "ui dividing header", "Equities Portfolio Analysis"),
-    tags$p("Explore the dynamics of equity investments with tools for editing exposures, visualizing NPV changes, and understanding production trajectories."),
-    
+    tags$h1("Equities Portfolio Analysis", class = "ui dividing header"),
+    tags$h3("Explore the dynamics of equity investments with tools for editing exposures, visualizing NPV changes, and understanding production trajectories.", class = "ui sub header"),
+    tags$hr(),
     tags$div(
       class = "ui segments",
       style = "display: flex; flex-direction: column; align-items: flex-start;",
