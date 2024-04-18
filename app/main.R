@@ -1,5 +1,5 @@
 box::use(
-  shiny[NS, moduleServer, tags, HTML]
+  shiny[NS, moduleServer, tags, HTML, ...]
 )
 
 # Module for Documentation Page 1
@@ -35,55 +35,73 @@ aboutUs <- function(input, output, session) {
 #' @export
 ui <- function(id) {
   ns <- NS(id)
-shiny::fluidPage(
-    shiny::tags$head(
-      shiny::tags$style(shiny::HTML("
-        .sidebar-section {
-          padding: 20px;
+fluidPage(
+    tags$head(
+      tags$style(HTML("
+        /* Overall navbar styling */
+        .navbar {
           background-color: #f9f9f9;
-          margin: 15px 0;
-          border-radius: 8px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          padding: 10px 20px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .sidebar-section .ui.header {
-          font-size: 18px;
+        
+        /* Style for nav items */
+        .nav-link, .navbar-brand {
+          color: #555;
+          margin-right: 10px;
+          transition: color 0.3s ease;
+        }
+        
+        /* Hover effect for nav items */
+        .nav-link:hover, .navbar-brand:hover {
           color: #333;
-          margin-bottom: 15px;
+          text-decoration: none;
         }
-        .ui.button {
-          background-color: #d4d4d5;
-          color: white;
+
+        /* Dropdown menu styling */
+        .dropdown-menu {
           border: none;
-          border-radius: 4px;
-          margin: 8px 0;
-          display: block;
-          width: 100%; /* Ensures full width */
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          font-size: 16px;
         }
-        .ui.button:hover {
-          color: black; /* Changes text color to black on hover */
-        }        
-        .ui.divider {
-          margin: 20px 0;
+
+        /* Dropdown item styling */
+        .dropdown-item {
+          color: #555;
+          transition: background-color 0.2s ease;
+        }
+
+        /* Hover effect for dropdown items */
+        .dropdown-item:hover {
+          background-color: #f0f0f0;
+          color: #333;
         }
       "))
     ),
-    # Sidebar Section
-    shiny::tags$div(
-      class = "sidebar-section",
-      shiny::tags$div(class = "ui header", "Navigation"),
-      shiny::actionButton(ns("btn_doc1"), "Go to Documentation 1", class = "ui button"),
-      shiny::actionButton(ns("btn_doc2"), "Go to Documentation 2", class = "ui button"),
-      shiny::actionButton(ns("btn_about"), "About Us", class = "ui button"),
-      shiny::tags$div(class = "ui divider")
+    # Navbar with dropdown and about us link right-aligned
+    navbarPage(
+      title = "",
+      position = "fixed-top",
+      theme = bslib::bs_theme(version = 4),
+      windowTitle = "Navigation Example",
+      
+      header = tags$a(href = "#about_us", class = "navbar-brand", "About Us"),  # Positioned on the right using the header for a cleaner look
+
+      # First tab is actually a dropdown
+      navbarMenu(
+        title = "Documentation",
+        tabPanel(title = "Documentation 1", value = "doc1"),
+        tabPanel(title = "Documentation 2", value = "doc2")
+      )
     ),
-    # Content Section
-    shiny::tags$div(
-      class = "sidebar-section",
-      shiny::tags$div(class = "ui header", "Content"),
-      shiny::uiOutput(ns("page_content"))  # Placeholder for displaying content of selected module
+    # Content section where content will be displayed
+    tags$div(
+      class = "container-fluid",
+      tags$div(class = "p-5", style = "margin-top: 60px;", 
+        uiOutput(ns("page_content"))
+      )
     )
   )
-
 }
 
 
