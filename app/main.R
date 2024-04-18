@@ -110,6 +110,7 @@ ui <- function(id) {
           tags$i(class = "dropdown icon"),
           div(
             class = "menu",
+            actionLink(ns("trisk_sidebar_link"), "Trisk Sidebar", class = "item"),
             actionLink(ns("bonds_loans_link"), "Bonds & Loans", class = "item"),
             actionLink(ns("equities_link"), "Equities", class = "item"),
           )
