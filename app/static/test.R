@@ -1,50 +1,8 @@
-box::use(
-  shiny[NS, moduleServer, tags, HTML, ...],
-  shiny.semantic[...]
-)
+library(shiny)
+library(shiny.semantic)
 
-# Module for Documentation Page 1
-documentation1UI <- function(id) {
-  ns <- NS(id)
-  shiny::tags$div(id = ns("content"), "Content of Documentation Page 1")
-}
-
-documentation1 <- function(input, output, session) {
-  # Placeholder for server-side logic if needed
-}
-
-# Module for Documentation Page 2
-documentation2UI <- function(id) {
-  ns <- NS(id)
-  shiny::tags$div(id = ns("content"), "Content of Documentation Page 2")
-}
-
-documentation2 <- function(input, output, session) {
-  # Placeholder for server-side logic if needed
-}
-
-# Module for About Us Page
-aboutUsUI <- function(id) {
-  ns <- NS(id)
-  shiny::tags$div(id = ns("content"), 
-  h1("About us"),
-          h3("Origin of our funding"),
-        p(
-"EU LIFE Project Grant
-Scientific Transition Risk Exercises for Stress tests & Scenario Analysis has received funding from the European Union’s Life programme under Grant No. LIFE21-GIC-DE-Stress under the LIFE-2021-SAP-CLIMA funding call"
-        ),
-  )
-}
-
-aboutUs <- function(input, output, session) {
-  # Placeholder for server-side logic if needed
-}
-
-#' @export
-ui <- function(id) {
-  ns <- NS(id)
-
-semanticPage(
+# Define UI
+ui <- semanticPage(
     tags$head(
         tags$link(rel = "stylesheet", href = "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"),
         tags$script(src = "https://code.jquery.com/jquery-3.5.1.min.js"),
@@ -148,37 +106,14 @@ semanticPage(
         )
     ),
     tags$footer(
-        p("Copyright © 2024 Theia")
+        p("Copyright © 2023 Your Company")
     )
 )
 
-
+# Define server logic
+server <- function(input, output, session) {
+    # Server logic
 }
 
-
-#' @export
-server <- function(id) {
-  moduleServer(id, function(input, output, session) {
-      # Observers to switch between pages
-  shiny::observeEvent(input$btn_doc1, {
-    output$page_content <- shiny::renderUI({
-      documentation1UI("doc1")
-    })
-  })
-  
-  shiny::observeEvent(input$btn_doc2, {
-    output$page_content <- shiny::renderUI({
-      documentation2UI("doc2")
-    })
-  })
-  
-  shiny::observeEvent(input$btn_about, {
-    output$page_content <- shiny::renderUI({
-      aboutUsUI("about")
-    })
-  })
-  })
-}
-
-
-
+# Run the application
+shinyApp(ui, server)

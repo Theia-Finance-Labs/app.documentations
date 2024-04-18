@@ -29,10 +29,19 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     z-index: 2;
 }
-
+.main-content-container {
+    background-color: #ffffff; /* Or any other contrasting color */
+    border: 1px solid #ddd; /* Optional border */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional shadow for depth */
+    padding: 20px; /* Inner spacing */
+    margin: 10px; /* Outer spacing to maintain alignment */
+    border-radius: 8px; /* Rounded corners */
+    overflow-y: auto; /* For scroll on overflow */
+}
         .ui.vertical.menu {
             width: 100%;
         }
+        
         .ui.vertical.menu .menu {
             position: absolute;
             background-color: #ffffff;
@@ -77,10 +86,6 @@
         width: 100%; /* Full width */
     }
 
-    .ui.vertical.menu .menu {
-        position: static; /* Dropdown takes natural flow */
-        box-shadow: none; /* Removes shadow for consistent appearance */
-    }
 }
     </style>
 </head>
@@ -101,7 +106,7 @@
                 <a class="item" href="/about.html">About Us</a>
             </div>
         </nav>
-        <section class="main-content">
+        <section class="main-content-container">
             <h2>Main Content Area</h2>
             <p>This is the main content area of the homepage. Feel free to explore the website through the navigation menu to the left.</p>
         </section>
