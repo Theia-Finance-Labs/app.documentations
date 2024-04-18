@@ -3,12 +3,12 @@ library(shiny.semantic)
 
 # Define UI
 ui <- semanticPage(
-    tags$head(
-        tags$link(rel = "stylesheet", href = "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"),
-        tags$script(src = "https://code.jquery.com/jquery-3.5.1.min.js"),
-        tags$script(src = "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.js")
-    ),
-    tags$style(HTML("
+  tags$head(
+    tags$link(rel = "stylesheet", href = "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"),
+    tags$script(src = "https://code.jquery.com/jquery-3.5.1.min.js"),
+    tags$script(src = "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.js")
+  ),
+  tags$style(HTML("
            body {
             font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
             margin: 0;
@@ -36,7 +36,7 @@ ui <- semanticPage(
         .ui.vertical.menu {
             width: 100%;
         }
-        
+
         .ui.vertical.menu .menu {
             position: absolute;
             background-color: #ffffff;
@@ -83,36 +83,38 @@ ui <- semanticPage(
 
 }
     ")),
-    div(
-        class = "content",
-        tags$nav(
-            class = "ui vertical menu",
-            div(class = "item ui header", "Navigation"),
-            div(class = "ui dropdown item",
-                "Documentation",
-                tags$i(class = "dropdown icon"),
-                div(class = "menu",
-                    a(class = "item", href = "/doc/page1.html", "Page 1"),
-                    a(class = "item", href = "/doc/page2.html", "Page 2"),
-                    a(class = "item", href = "/doc/page3.html", "Page 3")
-                )
-            ),
-            a(class = "item", href = "/about.html", "About Us")
-        ),
-        tags$section(
-            class = "main-content",
-            h2("Main Content Area"),
-            p("This is the main content area of the homepage. Feel free to explore the website through the navigation menu to the left.")
+  div(
+    class = "content",
+    tags$nav(
+      class = "ui vertical menu",
+      div(class = "item ui header", "Navigation"),
+      div(
+        class = "ui dropdown item",
+        "Documentation",
+        tags$i(class = "dropdown icon"),
+        div(
+          class = "menu",
+          a(class = "item", href = "/doc/page1.html", "Page 1"),
+          a(class = "item", href = "/doc/page2.html", "Page 2"),
+          a(class = "item", href = "/doc/page3.html", "Page 3")
         )
+      ),
+      a(class = "item", href = "/about.html", "About Us")
     ),
-    tags$footer(
-        p("Copyright © 2023 Your Company")
+    tags$section(
+      class = "main-content",
+      h2("Main Content Area"),
+      p("This is the main content area of the homepage. Feel free to explore the website through the navigation menu to the left.")
     )
+  ),
+  tags$footer(
+    p("Copyright © 2023 Your Company")
+  )
 )
 
 # Define server logic
 server <- function(input, output, session) {
-    # Server logic
+  # Server logic
 }
 
 # Run the application

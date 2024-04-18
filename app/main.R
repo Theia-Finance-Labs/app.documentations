@@ -2,183 +2,170 @@ box::use(
   shiny[NS, moduleServer, tags, HTML, ...],
   shiny.semantic[...]
 )
+box::use(
+  view/homepage,
+  view/crispy_doc_bondsnloans,
+  view/crispy_doc_equity,
+  view/gdp_st
+)
 
-# Module for Documentation Page 1
-documentation1UI <- function(id) {
-  ns <- NS(id)
-  shiny::tags$div(id = ns("content"), "Content of Documentation Page 1")
-}
-
-documentation1 <- function(input, output, session) {
-  # Placeholder for server-side logic if needed
-}
-
-# Module for Documentation Page 2
-documentation2UI <- function(id) {
-  ns <- NS(id)
-  shiny::tags$div(id = ns("content"), "Content of Documentation Page 2")
-}
-
-documentation2 <- function(input, output, session) {
-  # Placeholder for server-side logic if needed
-}
-
-# Module for About Us Page
-aboutUsUI <- function(id) {
-  ns <- NS(id)
-  shiny::tags$div(id = ns("content"), 
-  h1("About us"),
-          h3("Origin of our funding"),
-        p(
-"EU LIFE Project Grant
-Scientific Transition Risk Exercises for Stress tests & Scenario Analysis has received funding from the European Union’s Life programme under Grant No. LIFE21-GIC-DE-Stress under the LIFE-2021-SAP-CLIMA funding call"
-        ),
-  )
-}
-
-aboutUs <- function(input, output, session) {
-  # Placeholder for server-side logic if needed
-}
 
 #' @export
 ui <- function(id) {
   ns <- NS(id)
 
-semanticPage(
+
+  semanticPage(
     tags$head(
-        tags$link(rel = "stylesheet", href = "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"),
-        tags$script(src = "https://code.jquery.com/jquery-3.5.1.min.js"),
-        tags$script(src = "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.js")
+      tags$link(rel = "stylesheet", href = "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"),
+      tags$script(src = "https://code.jquery.com/jquery-3.5.1.min.js"),
+      tags$script(src = "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.js")
     ),
     tags$style(HTML("
-           body {
-            font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            background: #f0f0f0;
-        }
-        .content {
-            flex: 1;
-            display: flex;
-            margin-top: 10px;
-        }
-        nav {
-    flex-basis: 25%;
-    padding: 20px;
-    margin: 10px 10px 10px 0;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    z-index: 2;
-}
+      body {
+          font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+          display: flex;
+          flex-direction: column;
+          height: 100vh;
+          background: #f0f0f0;
+          margin: 0; /* Necessary to override browser defaults */
+          padding: 0; /* Necessary to override browser defaults */
+      }
 
-        .ui.vertical.menu {
-            width: 100%;
-        }
-        
-        .ui.vertical.menu .menu {
-            position: absolute;
-            background-color: #ffffff;
-            display: none;
-            width: 100%;
-            left: 0;
-            z-index: 1000; /* High z-index to ensure visibility */
-        }
-        .ui.vertical.menu .dropdown.item:hover .menu {
-            display: block;
-        }
-        section {
-    flex-grow: 3;
-    padding: 20px;
-    margin: 10px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    overflow-y: auto;
-}
+      .content {
+          flex: 1;
+          display: flex;
+          margin-top: 10px;
+      }
 
-        footer {
-            padding: 20px;
-            text-align: center;
-            background-color: #ffffff;
-            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
-            z-index: 1;
-        }
-        /* Responsive adjustments */
-@media (max-width: 768px) {
-    .content {
-        flex-direction: column;
-    }
+      nav {
+          flex-basis: 25%;
+          padding: 20px;
+          margin: 10px 10px 10px 0;
+          background-color: #f9f9f9;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
 
-    nav {
-        width: 250px; /* Fixed width for the navbar */
-        order: -1;
-    }
+      .ui.vertical.menu {
+          width: 100%;
+      }
 
-    section.main-content {
-        margin-left: 0;
-        width: 100%; /* Full width */
-    }
+      .ui.vertical.menu .menu {
+          position: absolute;
+          background-color: #ffffff;
+          display: none;
+          width: 100%;
+          left: 0;
+          z-index: 1000;
+      }
 
-}
-    ")),
+      .ui.vertical.menu .dropdown.item:hover .menu {
+          display: block;
+      }
+
+      section {
+          flex-grow: 3;
+          padding: 20px;
+          margin: 10px;
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          overflow-y: auto;
+      }
+
+      footer {
+          padding: 20px;
+          text-align: center;
+          background-color: #ffffff;
+          box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+      }
+
+      @media (max-width: 768px) {
+          .content {
+              flex-direction: column;
+          }
+
+          nav {
+              width: 250px; /* This specific width is necessary for your design at this breakpoint */
+              order: -1;
+          }
+
+          section.main-content {
+              margin-left: 0;
+              width: 100%;
+          }
+      }"
+      )),
     div(
-        class = "content",
-        tags$nav(
-            class = "ui vertical menu",
-            div(class = "item ui header", "Navigation"),
-            div(class = "ui dropdown item",
-                "Documentation",
-                tags$i(class = "dropdown icon"),
-                div(class = "menu",
-                    a(class = "item", href = "/doc/page1.html", "Page 1"),
-                    a(class = "item", href = "/doc/page2.html", "Page 2"),
-                    a(class = "item", href = "/doc/page3.html", "Page 3")
-                )
-            ),
-            a(class = "item", href = "/about.html", "About Us")
-        ),
-        tags$section(
-            class = "main-content",
-            h2("Main Content Area"),
-            p("This is the main content area of the homepage. Feel free to explore the website through the navigation menu to the left.")
+      class = "content",
+      tags$nav(
+        class = "ui vertical menu",
+        div(class = "item ui header", "Documentation"),
+        actionLink(ns("homepage_link"), "Homepage", class = "item"),
+        actionLink(ns("gdp_st_link"), "GDP Stress Tests", class = "item"),
+        div(
+          class = "ui dropdown item",
+          "Crispy App",
+          tags$i(class = "dropdown icon"),
+          div(
+            class = "menu",
+            actionLink(ns("bonds_loans_link"), "Bonds & Loans", class = "item"),
+            actionLink(ns("equities_link"), "Equities", class = "item"),
+          )
         )
-    ),
-    tags$footer(
-        p("Copyright © 2024 Theia")
+      ),
+      tags$section(
+        class = "main-content",
+         uiOutput(ns("main_content"))
+      )
     )
-)
-
-
+    # ,tags$footer(
+    #     p("Copyright © 2024 Theia")
+    # )
+  )
 }
 
 
 #' @export
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-      # Observers to switch between pages
-  shiny::observeEvent(input$btn_doc1, {
-    output$page_content <- shiny::renderUI({
-      documentation1UI("doc1")
+
+    homepage$server("homepage")
+    crispy_doc_bondsnloans$server("crispy_doc_bondsnloans")
+    crispy_doc_equity$server("crispy_doc_equity")
+    gdp_st$server("gdp_st")
+    
+      
+    ns <- session$ns
+
+    output$main_content <- renderUI({
+      homepage$ui(ns("homepage"))
     })
-  })
-  
-  shiny::observeEvent(input$btn_doc2, {
-    output$page_content <- shiny::renderUI({
-      documentation2UI("doc2")
-    })
-  })
-  
-  shiny::observeEvent(input$btn_about, {
-    output$page_content <- shiny::renderUI({
-      aboutUsUI("about")
-    })
-  })
+
+    observeEvent(input$homepage_link, {
+      output$main_content <- renderUI({
+        homepage$ui(ns("homepage"))
+      })
+    }, ignoreInit = TRUE)
+
+    observeEvent(input$gdp_st_link, {
+      output$main_content <- renderUI({
+        gdp_st$ui(ns("gdp_st"))
+      })
+    }, ignoreInit = TRUE)    
+    
+    observeEvent(input$bonds_loans_link, {
+      output$main_content <- renderUI({
+        crispy_doc_bondsnloans$ui(ns("crispy_doc_bondsnloans"))
+      })
+    }, ignoreInit = TRUE)
+    
+    observeEvent(input$equities_link, {
+      output$main_content <- renderUI({
+        crispy_doc_equity$ui(ns("crispy_doc_equity"))
+      })
+    }, ignoreInit = TRUE)
+
   })
 }
-
-
-
