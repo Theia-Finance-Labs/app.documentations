@@ -6,78 +6,69 @@ box::use(
 
 
 ####### UI
-
 ui <- function(id) {
   ns <- NS(id)
   semanticPage(
-      tags$div(class = "ui dividing header", "How to Use CRISPY"),
-      tags$p("To start using CRISPY, select either the Equities or Loans tab. Input the required data into the respective fields and parameters to view the tailored analysis and financial impact. Detailed instructions and tips can be found within each tab."),
-      tags$h3(class = "ui header", "Equities tab"),
-      tags$p("The Equities tab allows users to access sector and business unit granularities, providing insights into portfolio alignment with the Paris Agreement. Users can input exposure values to assess financial impact."),
+    tags$div(class = "ui dividing header", "Bonds And Loans Portfolio Analysis"),
+    tags$p("This interface offers a dynamic and interactive means to assess a portfolio in the context of a shock, evaluate risk scenarios, and make informed decisions on exposures and losses."),
+    
+    tags$div(
+      class = "ui segments",
+      style = "display: flex; flex-direction: column; align-items: flex-start;",
+      
       tags$div(
-        class = "ui two column very relaxed grid",
+        class = "ui segment",
+        style = "display: flex; align-items: center; justify-content: start; margin-bottom: 20px;",
+        tags$img(src = "static/bond_n_loan/portfolio.png", class = "ui medium image"),
         tags$div(
-          class = "column",
-          tags$img(src = "path/to/plot/image.png", class = "ui large bordered rounded image") # Replace with the path to your image
-        ),
-        tags$div(
-          class = "column",
-          tags$p("The plots offer insights into the performance and risk factors associated with the financial instruments in your portfolio. Understanding these visualizations is crucial for making informed decisions.")
+          style = "margin-left: 20px;",
+          tags$p("The Portfolio element displays investments with editable 'Exposure' and 'Loss Given Default'. Double-click to edit a cell directly within the table. The 'Term' denotes the period of investment in 2.5-year increments.")
         )
       ),
-      tags$h3(class = "ui header", "Loans tab"),
-      tags$p("The Loans tab is equipped to assess loan portfolio alignment with the Paris Agreement. Users can add rows by inputting values into search dropdowns and fill in data for exposure, loss given default, and term."),
+      
       tags$div(
-        class = "ui two column very relaxed grid",
+        class = "ui segment",
+        style = "display: flex; align-items: center; justify-content: start; margin-bottom: 20px;",
+        tags$img(src = "static/bond_n_loan/portfolio_edition.png", class = "ui medium image"),
         tags$div(
-          class = "column",
-          tags$img(src = "path/to/plot/image.png", class = "ui large bordered rounded image") # Replace with the path to your image
-        ),
-        tags$div(
-          class = "column",
-          tags$p("The plots offer insights into the performance and risk factors associated with the financial instruments in your portfolio. Understanding these visualizations is crucial for making informed decisions.")
+          style = "margin-left: 20px;",
+          tags$p("Add new investment entries by specifying sector or business unit and the associated term using the 'Add new row' function.")
         )
       ),
-      tags$div(class = "ui dividing header", "Understanding TRISK Parameters"),
-      tags$p("TRISK parameters play a crucial role in assessing the sustainability and risk factors of financial portfolios. Below is a detailed table of each parameter."),
-      tags$table(
-        class = "ui celled table",
-        tags$thead(
-          tags$tr(
-            tags$th("Name"),
-            tags$th("Description"),
-            tags$th("Impact on Outputs")
-          )
-        ),
-        tags$tbody(
-          tags$tr(
-            tags$td("Parameter 1"),
-            tags$td("This parameter helps in ..."),
-            tags$td("Affects the output by ...")
-          ),
-          tags$tr(
-            tags$td("Parameter B"),
-            tags$td("This parameter measures ..."),
-            tags$td("Influences the result by ...")
-          )
-          # More rows can be added as needed
+      
+      tags$div(
+        class = "ui segment",
+        style = "display: flex; align-items: center; justify-content: start; margin-bottom: 20px;",
+        tags$img(src = "static/bond_n_loan/select_and_delete.png", class = "ui medium image"),
+        tags$div(
+          style = "margin-left: 20px;",
+          tags$p("Select one (or multiple with ctrl+click) and click delete to remove rows.")
         )
       ),
-      tags$div(class = "ui divider"),
-      tags$p("Dive into our GitHub repository to explore the source code, contribute, or learn more about the technology behind our tools."),
-      tags$a(href = "LINK TO GITHUB", "Visit our GitHub"),
-      # Placeholder for GitHub-related imagery
 
-      tags$div(class = "ui divider"),
       tags$div(
-        tags$p(
-          "© ",
-          tags$a(href = "LINK TO YOUR HOMEPAGE", "COMPANY NAME"),
-          ". All rights reserved."
+        class = "ui segment",
+        style = "display: flex; align-items: center; justify-content: start; margin-bottom: 20px;",
+        tags$img(src = "static/bond_n_loan/pds.png", class = "ui medium image"),
+        tags$div(
+          style = "margin-left: 20px;",
+          tags$p("Probability of Default (PD) is calculated for each term under baseline and shock scenarios, offering a comparative view of potential risk fluctuations.")
         )
+      ),
+      
+      tags$div(
+        class = "ui segment",
+        style = "display: flex; align-items: center; justify-content: start; margin-bottom: 20px;",
+        tags$img(src = "static/bond_n_loan/expected_loss.png", class = "ui medium image"),
+        tags$div(
+          style = "margin-left: 20px;",
+          tags$p("The Expected Loss chart displays investment totals (in grey) overlapped with potential losses (in red), calculated in million USD.")
+        )
+      )
     )
   )
 }
+
 
 ####### Server
 

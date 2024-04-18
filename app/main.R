@@ -6,7 +6,8 @@ box::use(
   view/homepage,
   view/crispy_doc_bondsnloans,
   view/crispy_doc_equity,
-  view/gdp_st
+  view/gdp_st,
+  view/crispy_doc_trisk_sidebar
 )
 
 
@@ -14,13 +15,7 @@ box::use(
 ui <- function(id) {
   ns <- NS(id)
 
-
   semanticPage(
-    tags$head(
-      tags$link(rel = "stylesheet", href = "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"),
-      tags$script(src = "https://code.jquery.com/jquery-3.5.1.min.js"),
-      tags$script(src = "https://cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.js")
-    ),
     tags$style(HTML("
       body {
           font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -132,9 +127,12 @@ ui <- function(id) {
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
 
+    # INIT
+
     homepage$server("homepage")
     crispy_doc_bondsnloans$server("crispy_doc_bondsnloans")
     crispy_doc_equity$server("crispy_doc_equity")
+    crispy_doc_trisk_sidebar$server("crispy_doc_trisk_sidebar")
     gdp_st$server("gdp_st")
     
       
@@ -143,6 +141,9 @@ server <- function(id) {
     output$main_content <- renderUI({
       homepage$ui(ns("homepage"))
     })
+
+
+    # ROUTING
 
     observeEvent(input$homepage_link, {
       output$main_content <- renderUI({
@@ -167,6 +168,13 @@ server <- function(id) {
         crispy_doc_equity$ui(ns("crispy_doc_equity"))
       })
     }, ignoreInit = TRUE)
+
+    observeEvent(input$trisk_sidebar_link, {
+      output$main_content <- renderUI({
+        crispy_doc_trisk_sidebar$ui(ns("crispy_doc_trisk_sidebar"))
+      })
+    }, ignoreInit = TRUE)
+
 
   })
 }
