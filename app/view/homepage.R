@@ -1,8 +1,6 @@
 box::use(
   shiny[NS, moduleServer, tags, HTML, ...],
-  shiny.semantic[...],
-  shiny.router[...]
-)
+  shiny.semantic[...])
 #' @export
 ui <- function(id) {
   ns <- NS(id)

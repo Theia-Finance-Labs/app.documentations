@@ -2,3 +2,4 @@
 library(rhino)
 library(shiny)
 library(shiny.semantic)
+library(markdown)
