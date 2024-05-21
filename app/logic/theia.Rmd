@@ -39,8 +39,8 @@ We continuously aim to expand and improve the evidence base for decision-making 
 
 ## Funding
 
-### EU LIFE Project Grant
+Co-funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or CINEA. Neither the European Union nor the granting authority can be held responsible for them.
+
 Scientific Transition Risk Exercises for Stress tests & Scenario Analysis has received funding from the European Union’s Life programme under Grant No. LIFE21-GIC-DE-Stress under the LIFE-2021-SAP-CLIMA funding call.
 
 ![](static/logo_life_stress.jpg){width=30%}
-
